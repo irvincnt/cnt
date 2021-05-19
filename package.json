@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config config/webpack.prod.js",
-    "start": "webpack serve --config config/webpack.dev.js"
+    "start": "webpack serve --config config/webpack.dev.js",
+    "test": "standard --fix"
   },
   "author": "irvincnt",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "html-webpack-plugin": "^5.3.1",
     "sass": "^1.32.13",
     "sass-loader": "^11.1.1",
+    "standard": "^16.0.3",
     "style-loader": "^2.0.0",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
