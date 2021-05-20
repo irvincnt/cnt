@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/login.scss'
 
 export default function Login () {
@@ -9,7 +10,7 @@ export default function Login () {
           <p>Login</p>
           <span>
             o
-            <a>Crear una cuenta</a>
+            <Link to='/register'>Crear una cuenta</Link>
           </span>
         </div>
         <div className='login-form'>

@@ -1,7 +1,7 @@
 
 @import 'base';
 
-.login {
+.login, .register {
   height: 100%;
   display: flex;
   padding: 0 15px;
@@ -43,6 +43,7 @@
 
   &-form {
     .form-group{
+      width: 100%;
       padding-bottom: 15px;
     }
     .form-control {
@@ -54,6 +55,11 @@
       box-sizing: border-box;
       background-color: #fff;
       border: 1px solid #d8e2ef;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 10px;
     }
     .btn {
       width: 100%;
@@ -113,13 +119,13 @@
 }
 
 @media (min-width: 480px) {
-  .login .wrapper{
+  .login .wrapper, .register .wrapper{
     max-width: 380px;
     flex-wrap: wrap;
     gap: 12px;
   }
 
-  .login-social {
+  .login-social, .register-social {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 10px;
