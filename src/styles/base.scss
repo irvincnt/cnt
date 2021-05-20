@@ -10,6 +10,21 @@ $black: #5e6978;
 // textogris #5e6978
 // testonegro #414c5b
 
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	line-height: 1;
+	background:$gray;
+}
+
+.app {
+  height: 100vh;
+}
+
 h1{
     color: $blue1
 }

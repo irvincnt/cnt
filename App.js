@@ -6,7 +6,6 @@ export default function App () {
   console.log('ENV =>>' + process.env.API)
   return (
     <div className='app'>
-      <h1>Hola mundo</h1>
       <AppRouter />
     </div>
   )
