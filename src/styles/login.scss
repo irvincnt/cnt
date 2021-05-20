@@ -21,6 +21,7 @@
     display: flex;
     margin-bottom: 10px;
     justify-content: space-between;
+    align-items: center;
 
     p {
       font-size: 1.2rem;
@@ -30,9 +31,11 @@
       font-size: .8rem;
       a {
         padding-left: 4px;
+        color: $blue1;
         &:hover {
           color: $blue1;
           cursor: pointer;
+          text-decoration:underline;
         }
       }
     }
@@ -61,6 +64,22 @@
       border: 1px solid $blue1;
       background-color: $blue1;
       border-radius: .25rem;
+    }
+  }
+
+  .divider {
+    font-size: .8rem;
+    color: #9da9bb;
+    display: flex;
+    align-items: center;
+    margin: 0px -1em 1em -1em;
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      margin: 0 1em;
+      background: #9da9bb;;
     }
   }
 

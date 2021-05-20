@@ -25,6 +25,7 @@ export default function Login () {
             </div>
           </form>
         </div>
+        <p className='divider line one-line'>o inicia sesión con</p>
         <div className='login-social'>
           <div className='gg'>
             <a>Google</a>
