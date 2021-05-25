@@ -1,0 +1,31 @@
+.menu{
+  display: flex;
+  ul {
+    width: 100%;
+  }
+  ul li {
+    list-style-type: none;
+    padding: 16px;
+    
+    .group-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      span {
+        padding-left: 10px;
+      }
+
+      img:last-child {
+        text-align: left;
+        width: 16px;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
