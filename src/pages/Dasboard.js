@@ -10,7 +10,6 @@ export const Dasboard = () => {
   }
   return (
     <div>
-      Dasboard
       <Navbar />
       <button onClick={toggle}>Toggle sidebar</button>
       <Sidebar isActive={state} />

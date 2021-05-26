@@ -1,0 +1,12 @@
+.navbar {
+  width: 100%;
+  padding: .6rem 10px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing:border-box;
+
+  .perfil{
+    width: 35px;
+    border-radius: 50%;
+  }
+}
