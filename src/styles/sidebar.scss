@@ -1,5 +1,9 @@
 .menu{
   display: flex;
+  height: 0px;
+  overflow-y: hidden;
+  transition: all 0.3s ease-in;
+
   ul {
     width: 100%;
   }
@@ -28,4 +32,9 @@
     }
 
   }
+}
+
+.active {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
 }

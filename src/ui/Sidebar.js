@@ -4,9 +4,10 @@ import '../styles/sidebar.scss'
 import home from '../assets/icons/home.svg'
 import up from '../assets/icons/arrow-up.svg'
 
-export const Sidebar = () => {
+export const Sidebar = ({ isActive }) => {
+  console.log('isActive', isActive)
   return (
-    <nav className='menu'>
+    <nav className={`${isActive ? 'menu active' : 'menu'}`}>
       <ul>
         <li>
           <div className='group-item'>
