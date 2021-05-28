@@ -1,16 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../styles/navbar.scss'
 import menu from '../assets/icons/menu.svg'
 import perfil from '../assets/images/perfil.jpg'
-export class Navbar extends Component {
-  render () {
-    return (
-      <div className='navbar'>
-        <img src={menu} />
-        <img className='perfil' src={perfil} />
-      </div>
-    )
-  }
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { isOpenSidebar } from '../actions/ui'
 
-export default Navbar
+export const Navbar = () => {
+  const dispatch = useDispatch()
+  const { isCollapsible } = useSelector(state => state.ui)
+
+  const handlerSidebar = () => {
+    dispatch(isOpenSidebar(isCollapsible))
+  }
+
+  return (
+    <div className='navbar'>
+      <img src={menu} onClick={handlerSidebar} />
+      <img className='perfil' src={perfil} />
+    </div>
+  )
+}
