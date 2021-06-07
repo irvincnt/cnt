@@ -8,7 +8,9 @@ export default function App () {
   console.log('ENV =>>' + process.env.API)
   return (
     <Provider store={store}>
-      <AppRouter />
+      <div className='app'>
+        <AppRouter />
+      </div>
     </Provider>
   )
 }

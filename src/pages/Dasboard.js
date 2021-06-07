@@ -10,6 +10,7 @@ export const Dasboard = () => {
     <div>
       <Navbar />
       <Sidebar isActive={isCollapsible} />
+      hola
     </div>
   )
 }

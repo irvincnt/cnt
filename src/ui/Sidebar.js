@@ -7,7 +7,7 @@ import up from '../assets/icons/arrow-up.svg'
 export const Sidebar = ({ isActive }) => {
   console.log('isActive', isActive)
   return (
-    <nav className={`${isActive ? 'menu active' : 'menu'}`}>
+    <nav className={`${isActive ? 'menu menu_active' : 'menu'}`}>
       <ul>
         <li>
           <div className='group-item'>
@@ -31,7 +31,7 @@ export const Sidebar = ({ isActive }) => {
           <div className='group-item'>
             <div className='item'>
               <img src={home} />
-              <span>To Do</span>
+              <span>To</span>
             </div>
             <img src={up} />
           </div>
