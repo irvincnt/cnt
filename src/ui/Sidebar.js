@@ -5,7 +5,6 @@ import home from '../assets/icons/home.svg'
 import up from '../assets/icons/arrow-up.svg'
 
 export const Sidebar = ({ isActive }) => {
-  console.log('isActive', isActive)
   return (
     <nav className={`${isActive ? 'menu menu_active' : 'menu'}`}>
       <ul>

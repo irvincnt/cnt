@@ -1,16 +1,12 @@
 import React from 'react'
-import { Sidebar } from '../ui/Sidebar'
-import { Navbar } from '../ui/Navbar'
 import { useSelector } from 'react-redux'
+import '../styles/dasboard.scss'
 
 export const Dasboard = () => {
   const { isCollapsible } = useSelector(state => state.ui)
-
   return (
-    <div>
-      <Navbar />
-      <Sidebar isActive={isCollapsible} />
-      hola
+    <div className={`${isCollapsible ? 'dasboard_active' : ''}`}>
+      hola Dasboard
     </div>
   )
 }

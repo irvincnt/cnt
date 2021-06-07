@@ -1,16 +1,22 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Dasboard } from '../pages/Dasboard'
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import { DashboardRoutes } from './DashboardRoutes'
+import { PrivateRoute } from './PrivateRoute'
+import { PublicRoute } from './PublicRoute'
+
+const isA = true
 
 export const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/dasboard' component={Dasboard} />
+        <PublicRoute exact path='/login' component={Login} isAuthenticated={isA} />
+        <PublicRoute exact path='/register' component={Register} isAuthenticated={isA} />
+
+        <PrivateRoute exact path='/home' component={DashboardRoutes} isAuthenticated={isA} />
+        <Redirect to='/home' />
       </Switch>
     </Router>
   )
