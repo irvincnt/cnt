@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../hooks/useForm'
 
 export default function Register () {
+  const [values, handleInputChange] = useForm({ name: '', email: '', password1: '', password2: '' })
+
+  const handlerRegister = (e) => {
+    e.preventDefault()
+    console.log(values)
+  }
   return (
     <div className='register'>
       <div className='wrapper'>
@@ -13,19 +20,20 @@ export default function Register () {
           </span>
         </div>
         <div className='register-form'>
-          <form>
+          <form onSubmit={handlerRegister}>
             <div className='form-group'>
-              <input className='form-control' type='text' placeholder='Nombre' />
+              <input className='form-control is-invalid' type='text' placeholder='Nombre' name='name' value={values.name} onChange={handleInputChange} />
+              <p className='message-invalid'>Error en nombre</p>
             </div>
             <div className='form-group'>
-              <input className='form-control' type='email' placeholder='Correo' />
+              <input className='form-control' type='email' placeholder='Correo' name='email' value={values.email} onChange={handleInputChange} />
             </div>
             <div className='form-row'>
               <div className='form-group'>
-                <input className='form-control' type='password' placeholder='contraseña' />
+                <input className='form-control' type='password' placeholder='contraseña' name='password1' value={values.password1} onChange={handleInputChange} />
               </div>
               <div className='form-group'>
-                <input className='form-control' type='password' placeholder='Conformar contraseña' />
+                <input className='form-control' type='password' placeholder='Conformar contraseña' name='password2' value={values.password2} onChange={handleInputChange} />
               </div>
             </div>
             <div className='form-group'>

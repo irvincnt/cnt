@@ -72,6 +72,21 @@
       background-color: $blue1;
       border-radius: .25rem;
     }
+    .message-invalid {
+      font-size: 12px;
+      padding-top: 3px;
+      color: red;
+    }
+    .is-invalid, .is-invalid:focus{
+      border-color: #dc3545;
+    }
+
+    .is-invalid:focus{
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.2rem rgb(220 53 69 / 25%);
+      outline: #dc3545;
+    }
+    
   }
 
   .divider {
