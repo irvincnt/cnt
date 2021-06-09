@@ -6,7 +6,7 @@ import { DashboardRoutes } from './DashboardRoutes'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 
-const isA = true
+const isA = false
 
 export const AppRouter = () => {
   return (

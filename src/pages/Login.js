@@ -1,17 +1,21 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { startLogin } from '../actions/auth'
 import { useForm } from '../hooks/useForm'
 import '../styles/login.scss'
 
 export default function Login () {
+  const dispatch = useDispatch()
+
   const [values, handleInputChange] = useForm({
-    email: '',
-    password: ''
+    email: 'josai@gmail.com',
+    password: '12345'
   })
 
   const handlerRegister = (e) => {
     e.preventDefault()
-    console.log(values)
+    dispatch(startLogin(values.email, values.password))
   }
 
   return (
