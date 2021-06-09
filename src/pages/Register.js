@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import validator from 'validator'
+import { useDispatch } from 'react-redux'
+import { startRegister } from '../actions/auth'
 
 export default function Register () {
+  const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
   const [values, handleInputChange] = useForm({
     name: '',
@@ -21,6 +24,7 @@ export default function Register () {
       setErrors(errorsForm)
     } else {
       setErrors({})
+      dispatch(startRegister(values.name, values.email, values.password1))
     }
   }
 
