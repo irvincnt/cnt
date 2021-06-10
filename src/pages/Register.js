@@ -4,10 +4,13 @@ import { useForm } from '../hooks/useForm'
 import validator from 'validator'
 import { useDispatch } from 'react-redux'
 import { startRegister } from '../actions/auth'
+import { Spinner } from '../components/helpers/spinner'
 
 export default function Register () {
   const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
+  const [loading, setLoading] = useState(false)
+
   const [values, handleInputChange] = useForm({
     name: '',
     email: '',
@@ -17,13 +20,13 @@ export default function Register () {
 
   const handlerRegister = (e) => {
     e.preventDefault()
-    console.log(values)
 
     const errorsForm = validate()
     if (Object.keys(errorsForm).length > 0) {
       setErrors(errorsForm)
     } else {
       setErrors({})
+      setLoading(!loading)
       dispatch(startRegister(values.name, values.email, values.password1))
     }
   }
@@ -71,9 +74,7 @@ export default function Register () {
                 value={values.name}
                 onChange={handleInputChange}
               />
-              {errors.name && (
-                <p className='message-invalid'>{errors.name}</p>
-              )}
+              {errors.name && <p className='message-invalid'>{errors.name}</p>}
             </div>
             <div className='form-group'>
               <input
@@ -127,7 +128,12 @@ export default function Register () {
               </div>
             </div>
             <div className='form-group'>
-              <button className='btn'>Registrar</button>
+              <button
+                className={`${loading ? 'disabled-btn btn' : 'btn'}`}
+                disabled={loading}
+              >
+                {loading ? <Spinner /> : 'Registrar'}
+              </button>
             </div>
           </form>
         </div>

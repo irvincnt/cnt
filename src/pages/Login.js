@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startLogin } from '../actions/auth'
+import { Spinner } from '../components/helpers/spinner'
 import { useForm } from '../hooks/useForm'
 import '../styles/login.scss'
 
 export default function Login () {
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
 
   const [values, handleInputChange] = useForm({
     email: '',
@@ -15,6 +17,7 @@ export default function Login () {
 
   const handlerRegister = (e) => {
     e.preventDefault()
+    setLoading(!loading)
     dispatch(startLogin(values.email, values.password))
   }
 
@@ -50,7 +53,12 @@ export default function Login () {
               />
             </div>
             <div className='form-group'>
-              <button className='btn'>Log in</button>
+              <button
+                className={`${loading ? 'disabled-btn btn' : 'btn'}`}
+                disabled={loading}
+              >
+                {loading ? <Spinner /> : 'log in'}
+              </button>
             </div>
           </form>
         </div>
