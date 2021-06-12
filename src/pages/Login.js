@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { startLogin } from '../actions/auth'
-import { Spinner } from '../components/helpers/spinner'
+import { startLogin, removeError } from '../actions/auth'
+import { Alert } from '../components/helpers/alert'
 import { useForm } from '../hooks/useForm'
 import '../styles/login.scss'
 
 export default function Login () {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
+  const msg = useSelector(state => state.msg)
 
   const [values, handleInputChange] = useForm({
     email: '',
@@ -17,8 +17,17 @@ export default function Login () {
 
   const handlerRegister = (e) => {
     e.preventDefault()
-    setLoading(!loading)
     dispatch(startLogin(values.email, values.password))
+  }
+
+  const onChangeRegister = ({ target }) => {
+    handleInputChange({ target })
+
+    // if (values.email.length > 0 && values.password.length > 0 && msg.ok) {
+    //   dispatch(removeError())
+    // }
+
+    console.log('%c%s', 'color: #917399', values)
   }
 
   return (
@@ -39,7 +48,7 @@ export default function Login () {
                 placeholder='Email address'
                 name='email'
                 value={values.email}
-                onChange={handleInputChange}
+                onChange={onChangeRegister}
               />
             </div>
             <div className='form-group'>
@@ -49,19 +58,16 @@ export default function Login () {
                 placeholder='Password'
                 name='password'
                 value={values.password}
-                onChange={handleInputChange}
+                onChange={onChangeRegister}
               />
             </div>
             <div className='form-group'>
-              <button
-                className={`${loading ? 'disabled-btn btn' : 'btn'}`}
-                disabled={loading}
-              >
-                {loading ? <Spinner /> : 'log in'}
-              </button>
+              <button className='btn'>log in</button>
             </div>
           </form>
         </div>
+        {msg.ok && <Alert type='danger' label={msg.error} />}
+
         <p className='divider line one-line'>o inicia sesión con</p>
         <div className='login-social'>
           <div className='gg'>

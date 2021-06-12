@@ -12,7 +12,8 @@ export const startLogin = (email, password) => {
 
       dispatch(login({ uid: body.uid, name: body.name }))
     } else {
-      console.log('%c%s', 'color: #f04806', 'Errror')
+      console.log('%c%s', 'color: #f04806', JSON.stringify(body))
+      dispatch(showError(body.msg, body.ok))
     }
   }
 }
@@ -77,3 +78,14 @@ export const startLogout = () => {
 }
 
 const logout = () => ({ type: types.authLogout })
+
+const showError = (msg, ok) => ({
+  type: types.errorLogin,
+  payload: {
+    msg, ok
+  }
+})
+
+export const removeError = () => ({
+  type: types.errorRemove
+})
