@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import validator from 'validator'
-import { useDispatch } from 'react-redux'
-import { startRegister } from '../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeError, startRegister } from '../actions/auth'
 import { Spinner } from '../components/helpers/spinner'
+import { Alert } from '../components/helpers/alert'
 
 export default function Register () {
   const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
+  const msg = useSelector((state) => state.msg)
 
   const [values, handleInputChange] = useForm({
     name: '',
@@ -28,6 +30,16 @@ export default function Register () {
       setErrors({})
       setLoading(!loading)
       dispatch(startRegister(values.name, values.email, values.password1))
+    }
+  }
+
+  const onChangeLogin = ({ target }) => {
+    handleInputChange({ target })
+    setErrors({})
+
+    if ((values.email.length > 0 || values.email.length > 0) && msg.ok) {
+      setLoading(!loading)
+      dispatch(removeError())
     }
   }
 
@@ -72,7 +84,7 @@ export default function Register () {
                 placeholder='Nombre'
                 name='name'
                 value={values.name}
-                onChange={handleInputChange}
+                onChange={onChangeLogin}
               />
               {errors.name && <p className='message-invalid'>{errors.name}</p>}
             </div>
@@ -85,7 +97,7 @@ export default function Register () {
                 placeholder='Correo'
                 name='email'
                 value={values.email}
-                onChange={handleInputChange}
+                onChange={onChangeLogin}
               />
               {errors.email && (
                 <p className='message-invalid'>{errors.email}</p>
@@ -103,7 +115,7 @@ export default function Register () {
                   placeholder='contraseña'
                   name='password1'
                   value={values.password1}
-                  onChange={handleInputChange}
+                  onChange={onChangeLogin}
                 />
                 {errors.password1 && (
                   <p className='message-invalid'>{errors.password1}</p>
@@ -120,7 +132,7 @@ export default function Register () {
                   placeholder='Conformar contraseña'
                   name='password2'
                   value={values.password2}
-                  onChange={handleInputChange}
+                  onChange={onChangeLogin}
                 />
                 {errors.password2 && (
                   <p className='message-invalid'>{errors.password2}</p>
@@ -137,6 +149,8 @@ export default function Register () {
             </div>
           </form>
         </div>
+        {msg.ok && <Alert type='danger' label={msg.error} />}
+
         <p className='divider line one-line'>o registrar con</p>
         <div className='register-social'>
           <div className='gg'>

@@ -12,7 +12,6 @@ export const startLogin = (email, password) => {
 
       dispatch(login({ uid: body.uid, name: body.name }))
     } else {
-      console.log('%c%s', 'color: #f04806', JSON.stringify(body))
       dispatch(showError(body.msg, body.ok))
     }
   }
@@ -32,7 +31,6 @@ export const startChecking = () => {
         name: body.name
       }))
     } else {
-      console.log('%c%s', 'color: #f04806', body.msg)
       dispatch(checkingFinish())
     }
   }
@@ -58,7 +56,7 @@ export const startRegister = (name, email, password) => {
         })
       )
     } else {
-      console.log('%c%s', 'color: #fa3f06', body.msg)
+      dispatch(showError(body.msg, body.ok))
     }
   }
 }

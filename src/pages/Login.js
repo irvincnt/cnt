@@ -23,11 +23,9 @@ export default function Login () {
   const onChangeRegister = ({ target }) => {
     handleInputChange({ target })
 
-    // if (values.email.length > 0 && values.password.length > 0 && msg.ok) {
-    //   dispatch(removeError())
-    // }
-
-    console.log('%c%s', 'color: #917399', values)
+    if ((values.email.length > 0 || values.password.length > 0) && msg.ok) {
+      dispatch(removeError())
+    }
   }
 
   return (
