@@ -8,10 +8,10 @@ import { startLogout } from '../actions/auth'
 
 export const Navbar = () => {
   const dispatch = useDispatch()
-  const { isCollapsible } = useSelector(state => state.ui)
+  const { ui, auth } = useSelector(state => state)
 
   const handlerSidebar = () => {
-    dispatch(isOpenSidebar(isCollapsible))
+    dispatch(isOpenSidebar(ui?.isCollapsible))
   }
 
   const handlerLogaout = () => {
@@ -20,7 +20,8 @@ export const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <img src={menu} onClick={handlerSidebar} />
+      <img src={menu} onClick={handlerSidebar} className='icon' />
+      <h3>Bienvenido {auth?.name} </h3>
       <div>
         <button onClick={handlerLogaout}>Salir</button>
         <img className='perfil' src={perfil} />

@@ -2,67 +2,67 @@ import React from 'react'
 import '../styles/sidebar.scss'
 
 import home from '../assets/icons/home.svg'
-import up from '../assets/icons/arrow-up.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { isOpenSidebar } from '../actions/ui'
 
-export const Sidebar = ({ isActive }) => {
+export const Sidebar = () => {
+  const dispatch = useDispatch()
+  const { isCollapsible } = useSelector(state => state.ui)
+
+  const handlerSidebar = () => {
+    dispatch(isOpenSidebar(isCollapsible))
+  }
+
   return (
-    <nav className={`${isActive ? 'menu menu_active' : 'menu'}`}>
-      <ul>
-        <li>
-          <div className='group-item'>
-            <div className='item'>
-              <img src={home} />
-              <span>Home</span>
+    <>
+      <nav className={`${isCollapsible ? 'menu' : 'menu menu_active'}`}>
+        <ul>
+          <li>
+            <div className='group-item'>
+              <div className='item'>
+                <img src={home} />
+              </div>
             </div>
-            <img src={up} />
-          </div>
-        </li>
-        <li>
-          <div className='group-item'>
-            <div className='item'>
-              <img src={home} />
-              <span>Pages</span>
+          </li>
+          <li>
+            <div className='group-item'>
+              <div className='item'>
+                <img src={home} />
+              </div>
             </div>
-            <img src={up} />
-          </div>
-        </li>
-        <li>
-          <div className='group-item'>
-            <div className='item'>
-              <img src={home} />
-              <span>To</span>
+          </li>
+          <li>
+            <div className='group-item'>
+              <div className='item'>
+                <img src={home} />
+              </div>
             </div>
-            <img src={up} />
-          </div>
-        </li>
-        <li>
-          <div className='group-item'>
-            <div className='item'>
-              <img src={home} />
-              <span>Chat</span>
+          </li>
+          <li>
+            <div className='group-item'>
+              <div className='item'>
+                <img src={home} />
+              </div>
             </div>
-            <img src={up} />
-          </div>
-        </li>
-        <li>
-          <div className='group-item'>
-            <div className='item'>
-              <img src={home} />
-              <span>Email</span>
+          </li>
+          <li>
+            <div className='group-item'>
+              <div className='item'>
+                <img src={home} />
+              </div>
             </div>
-            <img src={up} />
-          </div>
-        </li>
-        <li>
-          <div className='group-item'>
-            <div className='item'>
-              <img src={home} />
-              <span>Autentication</span>
+          </li>
+          <li>
+            <div className='group-item'>
+              <div className='item'>
+                <img src={home} />
+              </div>
             </div>
-            <img src={up} />
-          </div>
-        </li>
-      </ul>
-    </nav>
+          </li>
+        </ul>
+      </nav>
+      {isCollapsible && <div className='overlay' onClick={handlerSidebar} />}
+    </>
+
   )
 }
