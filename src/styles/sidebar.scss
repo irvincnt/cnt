@@ -50,5 +50,9 @@
     bottom: 0;
     background-color: #fff;
     transition: transform 0.3s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

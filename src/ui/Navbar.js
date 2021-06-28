@@ -21,7 +21,10 @@ export const Navbar = () => {
   return (
     <div className='navbar'>
       <img src={menu} onClick={handlerSidebar} className='icon' />
-      <h3>Bienvenido {auth?.name} </h3>
+      <div className='info-left'>
+        <h3>Bienvenido {auth?.name} </h3>
+
+      </div>
       <div>
         <button onClick={handlerLogaout}>Salir</button>
         <img className='perfil' src={perfil} />
